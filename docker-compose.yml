@@ -1,0 +1,12 @@
+services:
+  minio_json_exporter:
+    image: rhinostake/minio_json_exporter:main
+    container_name: minio_exporter
+    restart: unless-stopped
+    environment:
+      - SERVER_URL=base.url.com
+      - ACCESS_KEY=minio_access_key
+      - SECRET_KEY=minio_secret_key
+    expose:
+      - "5000:5000"
+    network_mode: "host"
