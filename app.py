@@ -70,6 +70,9 @@ def generate_json_output(generator_list):
             }
             generator_output.append(item_dict)
 
+        # Sort generator_output by last_modified date in reverse chronological order
+        generator_output.sort(key=lambda x: x['last_modified'], reverse=True)
+
         # Create dict item with title of bucket name with values
         output_dict[generator_name] = generator_output
 
