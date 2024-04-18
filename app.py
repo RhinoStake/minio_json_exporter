@@ -12,7 +12,7 @@ app.json.sort_keys = False
 tag_name="public_snapshots"
 tag_value="true"
 
-server_url = os.environ.get('SERVER_URL', 'snapshots.rhinostake.com')
+server_url = os.environ.get('SERVER_URL', 'None')
 access_key = os.environ.get('ACCESS_KEY', 'None')
 secret_key = os.environ.get('SECRET_KEY', 'None')
 
