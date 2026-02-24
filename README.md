@@ -2,6 +2,7 @@
 
 Simple script for creating a json endpoint that lists files in minio buckets
 
+Docker image available at [rhinostake/minio_json_exporter](https://hub.docker.com/r/rhinostake/minio_json_exporter) on Docker Hub.
 
 ## How to Use
 
