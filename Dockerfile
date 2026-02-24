@@ -2,13 +2,16 @@
 
 FROM python:3.12-slim
 
-WORKDIR /python-docker
+WORKDIR /app
 
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
+COPY requirements.txt .
+RUN pip3 install --no-cache-dir -r requirements.txt gunicorn
+
+RUN useradd --create-home appuser
+USER appuser
 
 COPY . .
 
 EXPOSE 5000
 
-CMD [ "python3", "-m" , "flask", "run" ]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
