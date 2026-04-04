@@ -1,13 +1,19 @@
 # syntax=docker/dockerfile:1
 
-FROM python:3.12-slim
+FROM python:3-slim AS builder
+
+WORKDIR /build
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt gunicorn
+
+FROM python:3-alpine
 
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip3 install --no-cache-dir -r requirements.txt gunicorn
+COPY --from=builder /install /usr/local
 
-RUN useradd --create-home appuser
+RUN adduser -D appuser
 ENV TMPDIR=/home/appuser
 USER appuser
 
